@@ -18,7 +18,7 @@ echo "[General]
 wait_between_add = 5
 
 # Full path to log file
-log_path = ./SonarrOutput.txt
+log_path = /arrsync/SonarrOutput.txt
 
 # DEBUG, INFO, VERBOSE | Logging level.
 log_level = DEBUG
