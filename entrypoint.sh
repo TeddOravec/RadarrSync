@@ -6,12 +6,14 @@
 
 if test -f "/config/Sonarr.txt"; then
 	SONARR="/config/sonarr-template.txt"
+	echo "Sonarr.txt detected! Use sonarr-template to ensure you have everything you need in your file."
 else
 	SONARR="/config/Sonarr.txt"
-	touch $SONARR
+	echo "Sonarr.txt not found! Creating a new file using your ENV variables (if you provided them)"
 fi
+touch $SONARR
 
-cat << EOF > $SONARR
+cat << EOF >> $SONARR
 [General]
 # Time to wait between adding new series to a server. This will help reduce the load of the Sync server. 0 to disable. (seconds)
 wait_between_add = 5
@@ -50,12 +52,14 @@ EOF
 
 if test -f "/config/Radarr.txt"; then
 	RADARR="/config/radarr-template.txt"
+	echo "Radarr.txt detected! Use radarr-template to ensure you have everything you need in your file."
 else
 	RADARR="/config/Radarr.txt"
-	touch $RADARR
+	echo "Radarr.txt not found! Creating a new file using your ENV variables (if you provided them)"
 fi
+touch $RADARR
 
-cat << EOF > $RADARR
+cat << EOF >> $RADARR
 [Radarr]
 url = $SOURCE_RADARR_URL
 key = $SOURCE_RADARR_KEY
