@@ -8,6 +8,7 @@ if test -f "/arrsync/Sonarr.txt"; then
 	SONARR="/arrsync/sonarr-template.txt"
 else
 	SONARR="/arrsync/Sonarr.txt"
+	touch $SONARR
 fi
 
 cat << EOF > $SONARR
@@ -51,6 +52,7 @@ if test -f "/arrsync/Radarr.txt"; then
 	RADARR="/arrsync/radarr-template.txt"
 else
 	RADARR="/arrsync/Radarr.txt"
+	touch $RADARR
 fi
 
 cat << EOF > $RADARR
