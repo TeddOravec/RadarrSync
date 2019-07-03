@@ -1,16 +1,9 @@
 FROM python:3-alpine
 
-# Necessary for build hooks
-ARG BUILD_DATE
-ARG VCS_REF
+run wget https://github.com/TeddOravec/RadarrSync/raw/master/RadarrSync.py && wget https://github.com/TeddOravec/RadarrSync/raw/master/SonarrSync.py && wget https://github.com/TeddOravec/RadarrSync/raw/master/requirements.txt && wget https://github.com/TeddOravec/RadarrSync/raw/master/entrypoint.sh
 
-# Good docker practice, plus we get microbadger badges
-LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.vcs-url="https://github.com/funkypenguin/RadarrSync.git" \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.schema-version="2.2-r1"
-
-# Copy the script and requirements. Note that we don't copy Config.txt - this needs to be bind-mounted
+# Copy the script and requirements. Note that we don't copy Radarr.txt or Sonarr.txt- these need to be bind-mounted
+COPY SonarrSync.py /
 COPY RadarrSync.py / 
 COPY requirements.txt / 
 COPY entrypoint.sh / 

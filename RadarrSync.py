@@ -43,9 +43,9 @@ Config = configparser.ConfigParser()
 # Loads an alternate config file so that I can work on my servers without uploading config to github
 if DEV:
     settingsFilename = os.path.join(os.getcwd(), 'Dev'
-                                                 'Config.txt')
+                                                 'Radarr.txt')
 else:
-    settingsFilename = os.path.join(os.getcwd(), 'Config.txt')
+    settingsFilename = os.path.join(os.getcwd(), 'Radarr.txt')
 Config.read(settingsFilename)
 
 radarr_url = ConfigSectionMap("Radarr")['url']
@@ -100,7 +100,7 @@ for server in Config.sections():
                 logging.debug('path: {0}'.format(movie['path']))
                 logging.debug('monitored: {0}'.format(movie['monitored']))
 
-                # Update the path based on "path_from" and "path_to" passed to us in Config.txt
+                # Update the path based on "path_from" and "path_to" passed to us in Radarr.txt
                 path = movie['path']
                 path = path.replace(ConfigSectionMap(server)['path_from'], ConfigSectionMap(server)['path_to'])
 

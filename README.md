@@ -1,3 +1,5 @@
+Forked from FunkyPenguin, added support for not destroying your configs every time you boot and running both SonarrSync and RadarrSync
+
 [cookbookurl]: https://geek-cookbook.funkypenguin.co.nz
 [kitchenurl]: https://discourse.kitchen.funkypenguin.co.nz
 [discordurl]: http://chat.funkypenguin.co.nz
