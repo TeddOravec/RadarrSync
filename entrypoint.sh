@@ -74,7 +74,7 @@ EOF
 
 
 if [ -z ${DELAY+x} ] ; then
-	DELAY=15M
+	DELAY=15m
 fi
 
 # Now execute the sync script in a loop, waiting DELAY before running again
