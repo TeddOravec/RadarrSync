@@ -28,12 +28,12 @@ def ConfigSectionMap(section):
     return dict1
 
 Config = configparser.ConfigParser()
-settingsFilename = os.path.join(os.getcwd(), './Sonarr.txt')
+settingsFilename = os.path.join(os.getcwd(), '/config/Sonarr.txt')
 if args.config:
     settingsFilename = args.config
 elif not os.path.isfile(settingsFilename):
     print("Creating default config. Please edit and run again.")
-    shutil.copyfile(os.path.join(os.getcwd(), './Sonarr.txt'), settingsFilename)
+    shutil.copyfile(os.path.join(os.getcwd(), '/config/Sonarr.txt'), settingsFilename)
     sys.exit(0)
 Config.read(settingsFilename)
 

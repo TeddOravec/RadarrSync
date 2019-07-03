@@ -4,10 +4,10 @@
 #   Only if there is not already a file at the locations.
 #   Else, create template configs for reference.
 
-if test -f "/arrsync/Sonarr.txt"; then
-	SONARR="/arrsync/sonarr-template.txt"
+if test -f "/config/Sonarr.txt"; then
+	SONARR="/config/sonarr-template.txt"
 else
-	SONARR="/arrsync/Sonarr.txt"
+	SONARR="/config/Sonarr.txt"
 	touch $SONARR
 fi
 
@@ -48,10 +48,10 @@ profileIdMatch = $DEST_SONARR_PROFILE_NUM
 EOF
 
 
-if test -f "/arrsync/Radarr.txt"; then
-	RADARR="/arrsync/radarr-template.txt"
+if test -f "/config/Radarr.txt"; then
+	RADARR="/config/radarr-template.txt"
 else
-	RADARR="/arrsync/Radarr.txt"
+	RADARR="/config/Radarr.txt"
 	touch $RADARR
 fi
 

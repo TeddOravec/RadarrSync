@@ -43,9 +43,9 @@ Config = configparser.ConfigParser()
 # Loads an alternate config file so that I can work on my servers without uploading config to github
 if DEV:
     settingsFilename = os.path.join(os.getcwd(), 'Dev'
-                                                 'Radarr.txt')
+                                                 '/config/Radarr.txt')
 else:
-    settingsFilename = os.path.join(os.getcwd(), 'Radarr.txt')
+    settingsFilename = os.path.join(os.getcwd(), '/config/Radarr.txt')
 Config.read(settingsFilename)
 
 radarr_url = ConfigSectionMap("Radarr")['url']
