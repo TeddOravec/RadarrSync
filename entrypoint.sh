@@ -4,11 +4,10 @@
 #   Only if there is not already a file at the locations.
 #   Else, create template configs for reference.
 
-if test -f "/Sonarr.txt"; then
-	SONARR="/sonarr-template.txt"
-    echo "Sonarr.txt exists, making template."
+if test -f "/arrsync/Sonarr.txt"; then
+	SONARR="/arrsync/sonarr-template.txt"
 else
-	SONARR="/SonarrConfig.txt"
+	SONARR="/arrsync/Sonarr.txt"
 fi
 
 cat << EOF > $SONARR
@@ -48,11 +47,10 @@ profileIdMatch = $DEST_SONARR_PROFILE_NUM
 EOF
 
 
-if test -f "/Radarr.txt"; then
-	RADARR="/radarr-template.txt"
-    echo "Radarr.txt exists, making template."
+if test -f "/arrsync/Radarr.txt"; then
+	RADARR="/arrsync/radarr-template.txt"
 else
-	RADARR="/RadarrConfig.txt"
+	RADARR="/arrsync/Radarr.txt"
 fi
 
 cat << EOF > $RADARR
@@ -80,7 +78,7 @@ fi
 # Now execute the sync script in a loop, waiting DELAY before running again
 while true
 do
-	python /RadarrSync.py 
-	python /SonarrSync.py
+	python /arrsync/RadarrSync.py 
+	python /arrsync/SonarrSync.py
 	sleep $DELAY
 done

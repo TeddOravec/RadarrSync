@@ -33,7 +33,7 @@ if args.config:
     settingsFilename = args.config
 elif not os.path.isfile(settingsFilename):
     print("Creating default config. Please edit and run again.")
-    shutil.copyfile(os.path.join(os.getcwd(), 'sonarr-template.txt'), settingsFilename)
+    shutil.copyfile(os.path.join(os.getcwd(), 'Sonarr.txt'), settingsFilename)
     sys.exit(0)
 Config.read(settingsFilename)
 
