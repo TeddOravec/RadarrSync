@@ -13,8 +13,7 @@ else
 fi
 touch $SONARR
 
-cat << EOF >> $SONARR
-[General]
+echo "[General]
 # Time to wait between adding new series to a server. This will help reduce the load of the Sync server. 0 to disable. (seconds)
 wait_between_add = 5
 
@@ -47,8 +46,7 @@ profileId = $SOURCE_SONARR_PROFILE_NUM
 
 # This is the profile ID the series must have on the Master server.
 profileIdMatch = $DEST_SONARR_PROFILE_NUM
-EOF
-
+" > $SONARR
 
 if test -f "/config/Radarr.txt"; then
 	RADARR="/config/radarr-template.txt"
@@ -59,7 +57,7 @@ else
 fi
 touch $RADARR
 
-cat << EOF >> $RADARR
+echo "
 [Radarr]
 url = $SOURCE_RADARR_URL
 key = $SOURCE_RADARR_KEY
@@ -74,7 +72,7 @@ path_to = $DEST_RADARR_PATH
 profile = $SOURCE_RADARR_PROFILE_NUM
 # When adding movise to the destination Radarr, use _this_ quality profile (may differ from source)
 target_profile = $DEST_RADARR_PROFILE_NUM
-EOF
+"  > $RADARR
 
 
 if [ -z ${DELAY+x} ] ; then
