@@ -1,4 +1,54 @@
-Forked from FunkyPenguin, added support for not destroying your configs every time you boot and running both SonarrSync and RadarrSync
+# What is TeddOravec/ArrSync?
+
+This is a fork of FunkyPenguin/RadarrSync, with added support for SonarrSync. It also keeps a persistent config file every time you start the container.
+
+## Configuration
+
+Example docker-compose snippet:
+
+```yaml
+services:
+  arrsync:
+    build:
+      context: https://github.com/TeddOravec/ArrSync.git
+    container_name: arrsync
+    restart: unless-stopped
+    env_file:
+      - arrsync.env
+    volumes:
+      - "/srv/dockerdata/arrsync/config:/config"
+```
+
+The associated `arrsync.env` (with all possible configurable environment variables) file may look as follows:
+
+```bash
+SOURCE_SONARR_URL=http://sonarr:8989
+SOURCE_SONARR_KEY=<sonarr key>
+SONARR_ROOT_PATH=/srv/media/TV
+SOURCE_SONARR_PATH=/srv/media/TV
+SOURCE_SONARR_PROFILE_NUM=5
+
+DEST_SONARR_URL=http://sonarr4k:8989
+DEST_SONARR_KEY=<sonarr4k key>
+DEST_SONARR_PATH=/srv/media/TV 4K
+DEST_SONARR_PROFILE_NUM=5
+
+SOURCE_RADARR_URL=http://radarr:7878
+SOURCE_RADARR_KEY=<radarr key>
+SOURCE_RADARR_PATH=/srv/media/Movies
+SOURCE_RADARR_PROFILE_NUM=5
+
+DEST_RADARR_URL=http://radarr4k:7878
+DEST_RADARR_KEY=<radarr4k key>
+DEST_RADARR_PATH=/srv/media/Movies 4K
+DEST_RADARR_PROFILE_NUM=5
+```
+
+On first run, the above will then populate the ini files `/config/Sonarr.txt` and `/config/Radarr.txt` inside the container with the specified settings.
+
+# Upstream README from funkypenguin/RadarrSync follows...
+
+---
 
 [cookbookurl]: https://geek-cookbook.funkypenguin.co.nz
 [kitchenurl]: https://discourse.kitchen.funkypenguin.co.nz
@@ -9,14 +59,13 @@ Forked from FunkyPenguin, added support for not destroying your configs every ti
 
 [![geek-cookbook](https://raw.githubusercontent.com/funkypenguin/www.funkypenguin.co.nz/master/images/geek-kitchen-banner.png)][cookbookurl]
 
-# Contents
+## Contents
 
 1. [What is funkypenguin/radarrsync?](#what-is-funkypenguin-radarrsync)
 2. [Why should I use this?](#why-should-i-use-this)
 3. [How do I use it?](#how-do-i-use-this)
 4. [CHANGELOG](#changelog)
 5. [Upstream-readme](#Upstream-README)
-
 
 ---
 
@@ -32,28 +81,28 @@ Got more details at:
 
 ---
 
-# What is funkypenguin/radarrsync ?
+## What is funkypenguin/radarrsync ?
 
 A Dockerization of https://github.com/Sperryfreak01/RadarrSync, plus a few enhancments:
 
 * Ability to rewrite path of movie on destination Raddarr instance : [39](https://github.com/Sperryfreak01/RadarrSync/pull/39)
 * Ability to sync between arbitrary quality profiles on source and target instance : [38](https://github.com/Sperryfreak01/RadarrSync/pull/38)
 
-# Why should I use this?
+## Why should I use this?
 
 You should use it if you [use Docker for your Radarr instances](https://geek-cookbook.funkypenguin.co.nz/recipes/autopirate/), and you want to sync content (like your watchlist) between two Radarr instances, for the purposes of downloading
 two separate files of different quality (say, a 1080P WebDL and a 4K UHD).
 
-# How do I use this?
+## How do I use this?
 
-# CHANGELOG
+## CHANGELOG
 
 * Initial release : (_1 Jan 2019_)
 
 ---
 
 
-# Upstream README follows..
+# Upstream README from Sperryfreak01/RadarrSync follows...
 
 ## RadarrSync
 Syncs two Radarr servers through web API.  
@@ -94,6 +143,6 @@ python RadarSync.py
 
 #### Notes
  * Ensure that the root path is the same on both servers. ie /movies
+
  
- 
- 
+
